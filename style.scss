@@ -1,0 +1,216 @@
+$Tomato: hsl(4, 100%, 67%);
+$pink: rgb(255, 108, 145);
+$Dark_Slate_Grey: hsl(234, 29%, 20%);
+$Charcoal_Grey: hsl(235, 18%, 26%);
+$Grey: hsl(231, 7%, 60%);
+$White: hsl(0, 0%, 100%);
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(assets/fonts/Roboto-Regular.ttf);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $Charcoal_Grey;
+    height: 100vh;
+    color: $Dark_Slate_Grey;
+}
+
+.container{
+    background-color: $White;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1.7rem;
+    width: 50rem;
+    height: 30rem;
+    opacity: 1;
+    transform: scale(1);
+
+    .mobile{
+        display: none;
+    }
+
+    .subContainer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.5rem;
+        padding: 2rem;
+
+        h1{
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            
+            li{
+                list-style-type: none;
+                display: flex;
+                gap: 1rem;
+            }
+        }
+
+        .email{
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+
+            div{
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                .e{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    
+                    label{
+                        font-weight: 700;
+                        font-size: .8rem;
+                    }
+
+                    .error{
+                        color: $Tomato;
+                        display: none;
+                    }
+                }
+
+                input[type="text"]{
+                    border: 1px solid $Grey;
+                    padding-left: 1.5rem;
+
+                    &:hover, &:focus{
+                        cursor: pointer;
+                        border: 1px solid $Dark_Slate_Grey;
+                    }
+                }
+            }
+
+            input[type="text"], #btn{
+                height: 3rem;
+                border-radius: .4rem;
+            }
+
+            #btn{
+                border: none;
+                background-color: $Dark_Slate_Grey;
+                color: $White;
+                font-size: .9rem;
+                position: relative;
+
+                &::after{
+                    content: '';
+                    background: linear-gradient(to right, $pink, $Tomato);
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    bottom: -.5rem;
+                    height: 12px;
+                    filter: blur(1rem);
+                    opacity: 0;
+                }
+
+                &:hover{
+                    cursor: pointer;
+                    background: linear-gradient(to right, $pink, $Tomato);
+
+                    &::after{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.success{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $White;
+    border-radius: 1.7rem;
+    padding: 3rem;
+    width: 380px;
+    height: 350px;
+    opacity: 0;
+    transform: scale(0);
+
+    img{ 
+        width: 40px;
+        height: 40px;
+    }
+
+    h1{
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    p{
+        line-height: 1.4rem;
+
+        span{
+            font-weight: 700;
+        }
+    }
+
+    #successBtn{
+        border: none;
+        background-color: $Dark_Slate_Grey;
+        color: $White;
+        height: 3rem;
+        border-radius: .4rem;
+        position: relative;
+        font-size: .9rem;
+
+        &::after{
+            content: '';
+            background: linear-gradient(to right, $pink, $Tomato);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -.5rem;
+            height: 12px;
+            filter: blur(1rem);
+            opacity: 0;
+        }
+
+        &:hover{
+            cursor: pointer;
+            background: linear-gradient(to right, $pink, $Tomato);
+
+            &::after{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.container, .success{
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+
+    &.scale-0{
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    &.scale-1{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
