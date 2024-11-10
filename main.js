@@ -29,25 +29,16 @@ btn.addEventListener('click', (e) => {
     if(!emailValid){
         e.preventDefault();
     } else{
-        mainContainer.classList.add('scale-0');
-        setTimeout(() => {
-            mainContainer.style.display = "none";
-            successContainer.style.display = "flex";
-            successContainer.classList.add('scale-1');
-        }, 1000)
         inputEmail.innerHTML = email.value;
+        mainContainer.style.display = "none";  
+        successContainer.style.display = "flex";  
     }
 })
 
 successBtn.addEventListener('click', () => {
-    successContainer.classList.remove('scale-1');
-    mainContainer.style.display = "flex";
-    successContainer.style.display = "none";
     email.value = "";
-
-    setTimeout(() => {
-        mainContainer.classList.remove('scale-0');
-    }, 1000)
+    mainContainer.style.display = "flex";  
+    successContainer.style.display = "none";  
 })
 
 email.addEventListener('input', () => {
